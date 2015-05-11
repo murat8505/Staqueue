@@ -20,13 +20,13 @@ class MainPagerAdapter extends PagerAdapter
     // page should be displayed, from left-to-right.  If the page no longer exists,
     // return POSITION_NONE.
     @Override
-    public int getItemPosition (Object object)
-    {
+    public int getItemPosition (Object object) {
         int index = views.indexOf (object);
-        if (index == -1)
+        if ( index == -1 ) {
             return POSITION_NONE;
-        else
+        } else {
             return index;
+        }
     }
 
     //-----------------------------------------------------------------------------
@@ -34,8 +34,7 @@ class MainPagerAdapter extends PagerAdapter
     // to add the page to the container, which is normally the ViewPager itself.  Since
     // all our pages are persistent, we simply retrieve it from our "views" ArrayList.
     @Override
-    public Object instantiateItem (ViewGroup container, int position)
-    {
+    public Object instantiateItem (ViewGroup container, int position) {
         View v = views.get (position);
         container.addView (v);
         return v;
@@ -47,8 +46,7 @@ class MainPagerAdapter extends PagerAdapter
     // ViewPager itself.  Since all our pages are persistent, we do nothing to the
     // contents of our "views" ArrayList.
     @Override
-    public void destroyItem (ViewGroup container, int position, Object object)
-    {
+    public void destroyItem (ViewGroup container, int position, Object object) {
         container.removeView (views.get (position));
     }
 
@@ -57,16 +55,14 @@ class MainPagerAdapter extends PagerAdapter
     // Returns the total number of pages that the ViewPage can display.  This must
     // never be 0.
     @Override
-    public int getCount ()
-    {
+    public int getCount () {
         return views.size();
     }
 
     //-----------------------------------------------------------------------------
     // Used by ViewPager.
     @Override
-    public boolean isViewFromObject (View view, Object object)
-    {
+    public boolean isViewFromObject (View view, Object object) {
         return view == object;
     }
 
@@ -74,8 +70,7 @@ class MainPagerAdapter extends PagerAdapter
     // Add "view" to right end of "views".
     // Returns the position of the new view.
     // The app should call this to add pages; not used by ViewPager.
-    public int addView (View v)
-    {
+    public int addView (View v) {
         return addView (v, views.size());
     }
 
@@ -83,8 +78,7 @@ class MainPagerAdapter extends PagerAdapter
     // Add "view" at "position" to "views".
     // Returns position of new view.
     // The app should call this to add pages; not used by ViewPager.
-    public int addView (View v, int position)
-    {
+    public int addView (View v, int position) {
         views.add (position, v);
         return position;
     }
@@ -93,8 +87,7 @@ class MainPagerAdapter extends PagerAdapter
     // Removes "view" from "views".
     // Retuns position of removed view.
     // The app should call this to remove pages; not used by ViewPager.
-    public int removeView (ViewPager pager, View v)
-    {
+    public int removeView (ViewPager pager, View v) {
         return removeView (pager, views.indexOf (v));
     }
 
@@ -102,8 +95,7 @@ class MainPagerAdapter extends PagerAdapter
     // Removes the "view" at "position" from "views".
     // Retuns position of removed view.
     // The app should call this to remove pages; not used by ViewPager.
-    public int removeView (ViewPager pager, int position)
-    {
+    public int removeView (ViewPager pager, int position) {
         // ViewPager doesn't have a delete method; the closest is to set the adapter
         // again.  When doing so, it deletes all its views.  Then we can delete the view
         // from from the adapter and finally set the adapter to the pager again.  Note
@@ -120,8 +112,7 @@ class MainPagerAdapter extends PagerAdapter
     //-----------------------------------------------------------------------------
     // Returns the "view" at "position".
     // The app should call this to retrieve a view; not used by ViewPager.
-    public View getView (int position)
-    {
+    public View getView (int position) {
         return views.get (position);
     }
 
