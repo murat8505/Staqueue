@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 public class MainActivity extends Activity {
@@ -23,12 +24,21 @@ public class MainActivity extends Activity {
 
         // Create an initial view to display; must be a subclass of FrameLayout.
         LayoutInflater inflater = getLayoutInflater();
-        FrameLayout v0 = (FrameLayout) inflater.inflate (R.layout.one_of_my_page_layouts, null);
-        pagerAdapter.addView (v0, 0);
-        pagerAdapter.notifyDataSetChanged();
+//        FrameLayout v0 = (FrameLayout) inflater.inflate (R.layout.page_layout, null);
+//        pagerAdapter.addView (v0, 0);
+//        pagerAdapter.notifyDataSetChanged();
 
 
-        FrameLayout v1 = (FrameLayout) inflater.inflate (R.layout.one_of_my_page_layouts, null);
+        FrameLayout v1 = (FrameLayout) inflater.inflate (R.layout.page_layout, null);
+        Button button = (Button) v1.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FrameLayout v1 = (FrameLayout) getLayoutInflater().inflate (R.layout.page_layout, null);
+                pagerAdapter.addView (v1, 0);
+                pagerAdapter.notifyDataSetChanged();
+            }
+        });
         pagerAdapter.addView (v1, 0);
         pagerAdapter.notifyDataSetChanged();
     }
