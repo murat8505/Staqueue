@@ -11,4 +11,13 @@
         android:layout_height="wrap_content"
         android:text="hello"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Fragment"
+        android:id="@+id/buttonAddFragment"
+        android:layout_below="@+id/textViewURL"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

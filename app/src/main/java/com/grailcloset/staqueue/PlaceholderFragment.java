@@ -2,9 +2,12 @@ package com.grailcloset.staqueue;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -37,8 +40,17 @@ public class PlaceholderFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         TextView textViewURL = (TextView) rootView.findViewById(R.id.textViewURL);
+        textViewURL.setText( getArguments().getString( URL_ADDRESS ) );
 
-        textViewURL.setText( getArguments().getString(URL_ADDRESS) );
+        Button buttonAddFragment = (Button) rootView.findViewById(R.id.buttonAddFragment);
+        buttonAddFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Datamart.getInstance().getMainPagerAdapter().getFragments().add(PlaceholderFragment.newInstance( "XX" ));
+                Datamart.getInstance().getMainPagerAdapter().notifyDataSetChanged();
+            }
+        });
 
         return rootView;
     }
