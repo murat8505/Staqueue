@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by Oliver on 5/11/2015.
@@ -14,16 +15,16 @@ public class PlaceholderFragment extends Fragment {
      * The fragment argument representing the section number for this
      * fragment.
      */
-    private static final String ARG_SECTION_NUMBER = "section_number";
+    private static final String URL_ADDRESS = "section_number";
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static PlaceholderFragment newInstance(int sectionNumber) {
+    public static PlaceholderFragment newInstance(String url) {
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        args.putString(URL_ADDRESS, url);
         fragment.setArguments(args);
         return fragment;
     }
@@ -35,6 +36,10 @@ public class PlaceholderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        TextView textViewURL = (TextView) rootView.findViewById(R.id.textViewURL);
+
+        textViewURL.setText( getArguments().getString(URL_ADDRESS) );
+
         return rootView;
     }
 }
