@@ -12,9 +12,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         Datamart.getInstance().setMainPagerAdapter( new MainPagerAdapter( getSupportFragmentManager() ) );
-        Datamart.getInstance().getMainPagerAdapter().getFragments().add(PlaceholderFragment.newInstance("http://www.google.com"));
+        Datamart.getInstance().getMainPagerAdapter().getFragments().add(PlaceholderFragment.newInstance("http://www.w3schools.com/html/html_images.asp"));
         Datamart.getInstance().getMainPagerAdapter().getFragments().add(PlaceholderFragment.newInstance("http://www.yahoo.com"));
-        Datamart.getInstance().getMainPagerAdapter().getFragments().add(PlaceholderFragment.newInstance("http://www.grailcloset.com"));
+        Datamart.getInstance().getMainPagerAdapter().getFragments().add(PlaceholderFragment.newInstance("http://www.google.com"));
         Datamart.getInstance().getMainPagerAdapter().notifyDataSetChanged();
 
         // Set up the ViewPager with the sections adapter.
