@@ -19,6 +19,7 @@ public class PlaceholderFragment extends Fragment {
      * fragment.
      */
     private static final String URL_ADDRESS = "section_number";
+    private String URL;
 
     /**
      * Returns a new instance of this fragment for the given section
@@ -27,20 +28,28 @@ public class PlaceholderFragment extends Fragment {
     public static PlaceholderFragment newInstance(String url) {
         PlaceholderFragment fragment = new PlaceholderFragment();
         Bundle args = new Bundle();
-        args.putString(URL_ADDRESS, url);
+//        args.putString(URL_ADDRESS, url);
         fragment.setArguments(args);
         return fragment;
     }
 
     public PlaceholderFragment() {
+//        URL = getArguments().getString( URL_ADDRESS );
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
         TextView textViewURL = (TextView) rootView.findViewById(R.id.textViewURL);
-        textViewURL.setText( getArguments().getString( URL_ADDRESS ) );
+//        textViewURL.setText( URL );
 
         Button buttonAddFragment = (Button) rootView.findViewById(R.id.buttonAddFragment);
         buttonAddFragment.setOnClickListener(new View.OnClickListener() {
