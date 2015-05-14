@@ -21,29 +21,45 @@ public class MyWebView extends WebView {
         super.onCreateContextMenu(menu);
 //        Log.d("catcat", "LONG CLICK BRUH");
 
-        HitTestResult result = getHitTestResult();
+        final HitTestResult result = getHitTestResult();
+//        Log.d("catcat", result.toString() + ", " + result.getType());
+//        Log.d("catcat", HitTestResult.SRC_ANCHOR_TYPE + ", " + result.getExtra());
 
         MenuItem.OnMenuItemClickListener handler = new MenuItem.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
+                switch ( item.getItemId() ) {
+                    case 1:
+                        Datamart.getInstance().addNext(result.getExtra());
+                        break;
+                    case 2:
+                        Datamart.getInstance().addToEnd(result.getExtra());
+                        break;
+                }
                 // do the menu action
                 return true;
             }
         };
 
-        if (result.getType() == HitTestResult.IMAGE_TYPE ||
-                result.getType() == HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
-            // Menu options for an image.
-            //set the header title to the image url
-            menu.setHeaderTitle(result.getExtra());
-            menu.add(0, 1, 0, "Save Image").setOnMenuItemClickListener(handler);
-            menu.add(0, 2, 0, "View Image").setOnMenuItemClickListener(handler);
-        } else if (result.getType() == HitTestResult.ANCHOR_TYPE ||
-                result.getType() == HitTestResult.SRC_ANCHOR_TYPE) {
-            // Menu options for a hyperlink.
-            //set the header title to the link url
-            menu.setHeaderTitle(result.getExtra());
-            menu.add(0, 1, 0, "Save Link").setOnMenuItemClickListener(handler);
-            menu.add(0, 2, 0, "Share Link").setOnMenuItemClickListener(handler);
+        if ( result.getType() == HitTestResult.SRC_ANCHOR_TYPE ) {
+//            menu.setHeaderTitle("Found a link");
+            menu.add(0, 1, 0, "Read next" ).setOnMenuItemClickListener(handler);
+            menu.add(0, 2, 0, "Add to queue" ).setOnMenuItemClickListener(handler);
         }
+
+//        if (result.getType() == HitTestResult.IMAGE_TYPE ||
+//                result.getType() == HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
+//            // Menu options for an image.
+//            //set the header title to the image url
+//            menu.setHeaderTitle(result.getExtra());
+//            menu.add(0, 1, 0, "Save Image").setOnMenuItemClickListener(handler);
+//            menu.add(0, 2, 0, "View Image").setOnMenuItemClickListener(handler);
+//        } else if (result.getType() == HitTestResult.ANCHOR_TYPE ||
+//                result.getType() == HitTestResult.SRC_ANCHOR_TYPE) {
+//            // Menu options for a hyperlink.
+//            //set the header title to the link url
+//            menu.setHeaderTitle(result.getExtra());
+//            menu.add(0, 1, 0, "Save Link").setOnMenuItemClickListener(handler);
+//            menu.add(0, 2, 0, "Share Link").setOnMenuItemClickListener(handler);
+//        }
     }
 }

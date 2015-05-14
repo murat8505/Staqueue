@@ -12,7 +12,7 @@ import java.util.ArrayList;
 class MainPagerAdapter extends FragmentPagerAdapter {
 
 
-    private ArrayList<Fragment> fragments = new ArrayList<Fragment>();
+    private ArrayList<PageFragment> fragments = new ArrayList<PageFragment>();
 
 
     public MainPagerAdapter(FragmentManager fm) {
@@ -20,7 +20,7 @@ class MainPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
+    public PageFragment getItem(int position) {
         return fragments.get(position);
     }
 
@@ -29,10 +29,12 @@ class MainPagerAdapter extends FragmentPagerAdapter {
         return fragments.size();
     }
 
-    public ArrayList<Fragment> getFragments() {
+    public ArrayList<PageFragment> getFragments() {
         return fragments;
     }
 
-    public void setFragments(ArrayList<Fragment> fragments) {
+    public void setFragments(ArrayList<PageFragment> fragments) {
         this.fragments = fragments;
-    }}
+    }
+}
+

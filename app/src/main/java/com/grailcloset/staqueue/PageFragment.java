@@ -12,7 +12,7 @@ import android.widget.Button;
 /**
  * Created by Oliver on 5/11/2015.
  */
-public class PlaceholderFragment extends Fragment {
+public class PageFragment extends Fragment {
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -24,15 +24,15 @@ public class PlaceholderFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static PlaceholderFragment newInstance(String url) {
-        PlaceholderFragment fragment = new PlaceholderFragment();
+    public static PageFragment newInstance(String url) {
+        PageFragment fragment = new PageFragment();
         Bundle args = new Bundle();
         args.putString(URL_ADDRESS, url);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public PlaceholderFragment() {
+    public PageFragment() {
     }
 
     @Override
@@ -44,7 +44,7 @@ public class PlaceholderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_page, container, false);
 
 //        TextView textViewURL = (TextView) rootView.findViewById(R.id.textViewURL);
 //        textViewURL.setText(URL);
@@ -68,16 +68,24 @@ public class PlaceholderFragment extends Fragment {
         webView.loadUrl(URL);
 
 
-        Button buttonAddFragment = (Button) rootView.findViewById(R.id.buttonAddFragment);
-        buttonAddFragment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Datamart.getInstance().getMainPagerAdapter().getFragments().add(PlaceholderFragment.newInstance(URL));
-                Datamart.getInstance().getMainPagerAdapter().notifyDataSetChanged();
-            }
-        });
+//        Button buttonAddFragment = (Button) rootView.findViewById(R.id.buttonAddFragment);
+//        buttonAddFragment.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Datamart.getInstance().getMainPagerAdapter().getFragments().add(PageFragment.newInstance(URL));
+//                Datamart.getInstance().getMainPagerAdapter().notifyDataSetChanged();
+//            }
+//        });
 
         return rootView;
+    }
+
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
     }
 }
